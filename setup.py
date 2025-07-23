@@ -22,6 +22,6 @@ version='0.0.1',
 author='faiz',
 author_email='razafaiz003@gmail.com',
 packages=find_packages(),
-install_requires=get_requirements('requirements.txt')
+install_requires=get_requirements('requirments.txt')
 
 )
