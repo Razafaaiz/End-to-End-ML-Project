@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENTS EXAM PERFORMANCE</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #f7f8fc, #e0eafc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .submit-btn {
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>STUDENT PERFORMANCE SCORE</h1>
+    <h2>Prediction Form</h2>
+
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <label>Gender</label>
+        <select name="gender" required title="Gender">
+            <option disabled selected>Select your Gender</option>
+            <option>male</option>
+            <option>female</option>
+        </select>
+
+        <label>Race or Ethnicity</label>
+        <select name="ethnicity" required title="Race or Ethnicity">
+            <option disabled selected>Select Ethnicity</option>
+            <option>group A</option>
+            <option>group B</option>
+            <option>group C</option>
+            <option>group D</option>
+            <option>group E</option>
+        </select>
+
+        <label>Parental Level of Education</label>
+        <select name="parental_level_of_education" required title="Parental Level of Education">
+            <option disabled selected>Select Parent Education</option>
+            <option>associate's degree</option>
+            <option>bachelor's degree</option>
+            <option>master's degree</option>
+            <option>some college</option>
+            <option>some high school</option>
+            <option>high school</option>
+        </select>
+
+        <label>Lunch Type</label>
+        <select name="lunch" required title="Lunch Type">
+            <option disabled selected>Select Lunch Type</option>
+            <option>standard</option>
+            <option>free/reduced</option>
+        </select>
+
+        <label>Test Preparation Course</label>
+        <select name="test_preparation_course" required title="Test Preparation Course">
+            <option disabled selected>Select Test Course</option>
+            <option>none</option>
+            <option>completed</option>
+        </select>
+
+        <label>Writing Score out of 100</label>
+        <input type="number" name="writing_score" min="0" max="100" required placeholder="Enter your writing score">
+
+        <label>Reading Score out of 100</label>
+        <input type="number" name="reading_score" min="0" max="100" required placeholder="Enter your reading score">
+
+        <button class="submit-btn" type="submit">Predict your Maths Score</button>
+</form>
+
+        <div class="result">
+            THE SCORE IS {{ results }}
+        </div>
+</div>
+
+</body>
+</html>
