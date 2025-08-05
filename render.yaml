@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: spam-detection-app
+    name: STUDENTS PERFORMANCE PREDICTION
     runtime: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn app:app"
